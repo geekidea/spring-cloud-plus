@@ -1,0 +1,32 @@
+server:
+  port: 9200
+
+spring:
+  application:
+    name: scp-example
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+#    alibaba:
+#      seata:
+#        tx-service-group: scp-system-seata-tx-service-group
+
+# 启用 feign sentinel
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  sentinel:
+    enabled: true
+    transport:
+      port: 8719
+      dashboard: localhost:8600
+
+# 日志
+logging:
+  level:
+    com.alibaba.nacos.client.config: error
+

@@ -1,0 +1,42 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: scp-admin
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+
+# Spring Boot Admin Server配置
+---
+spring:
+  boot:
+    admin:
+      monitor:
+        period: 100000
+        status-lifetime: 100000
+        connect-timeout: 100000
+        read-timeout: 100000
+      ui:
+        external-views:
+          - label: "🚀"
+            url: https://springboot.plus
+            order: 2000
+
+# Spring Boot Admin 登录账号密码
+spring-boot-plus:
+  admin:
+    username: admin
+    password: admin
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

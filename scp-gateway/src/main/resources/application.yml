@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: scp-gateway
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+            allowHeaders:
+              - Content-Type
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: index
+          uri: https://github.com
+          predicates:
+            - Path=/geekidea/spring-cloud-plus
+        - id: scp-system-server
+          uri: lb://scp-system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+        - id: scp-example-server
+          uri: lb://scp-example
+          predicates:
+            - Path=/example/**
+          filters:
+            - StripPrefix=1
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+---
+############################## Spring boot admin start ##############################
+---
+spring:
+  boot:
+    admin:
+      client:
+        instance:
+          # 使用IP地址
+          prefer-ip: true
+      monitor:
+        period: 100000
+        status-lifetime: 100000
+        connect-timeout: 100000
+        read-timeout: 100000
+
+# 开启和暴露端点
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+    logfile:
+      #可在线查看日志
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# 自定义项目信息，Spring Boot Admin展示使用
+info:
+  project-groupId: '@project.parent.groupId@'
+  project-name: ${spring.application.name}
+  project-author: geekidea
+  project-description: ${spring.application.name} server
+  project-sourceEncoding: '@project.build.sourceEncoding@'
+  project-spring-boot-version: '@spring-boot.version@'
+  project-version: '@project.version@'
+  project-website: 'https://springcloud.plus'
+############################## Spring boot admin end ###############################
