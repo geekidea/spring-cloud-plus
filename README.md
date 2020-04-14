@@ -33,7 +33,7 @@ mybatisplus | 3.3.1 | Dao
 ## Quick Start
 
 ### git clone
-```shell script
+```text
 git clone https://github.com/geekidea/spring-cloud-plus.git
 mvn clean install
 ```
@@ -44,7 +44,7 @@ mvn clean install
 [https://github.com/alibaba/nacos/releases/tag/1.2.1](https://github.com/alibaba/nacos/releases/tag/1.2.1)
 
 #### 启动Nacos
-```shell script
+```text
 sh nacos/bin/startup.sh -m standalone
 ```
 
@@ -57,7 +57,7 @@ Nacos控制台账号密码：`nacos`/`nacos`
 [https://github.com/alibaba/Sentinel/releases/tag/1.7.2](https://github.com/alibaba/Sentinel/releases/tag/1.7.2)
 
 #### 启动Sentinel
-```shell script
+```text
 java -Dserver.port=8600 -Dcsp.sentinel.dashboard.server=localhost:8600 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard-1.7.2.jar
 ```
 
