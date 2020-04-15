@@ -49,6 +49,7 @@
     <properties>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
         <spring-cloud.version>2.2.2.RELEASE</spring-cloud.version>
+        <spring-cloud-openfeign.version>2.2.0.RELEASE</spring-cloud-openfeign.version>
         <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
@@ -110,7 +111,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-openfeign-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>${spring-cloud-openfeign.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
