@@ -74,7 +74,7 @@ public class FooBarController extends BaseController {
     /**
      * FooBar分页列表
      */
-    @PostMapping("/getPageList")
+    @PostMapping("/list")
     @ApiOperation(value = "FooBar分页列表", response = FooBar.class)
     public ApiResult<Paging<FooBar>> getFooBarPageList(@Validated @RequestBody FooBarPageQuery fooBarPageQuery) throws Exception {
         Paging<FooBar> paging = fooBarService.getFooBarPageList(fooBarPageQuery);
