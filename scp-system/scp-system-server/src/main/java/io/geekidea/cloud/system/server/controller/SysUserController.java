@@ -16,6 +16,7 @@
 
 package io.geekidea.cloud.system.server.controller;
 
+import io.geekidea.cloud.common.core.api.ApiResult;
 import io.geekidea.cloud.system.api.entity.SysUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -52,4 +53,10 @@ public class SysUserController {
         return "test error...";
     }
 
+
+    @GetMapping("/test")
+    public ApiResult test(){
+        System.out.println("test...");
+        return ApiResult.ok();
+    }
 }

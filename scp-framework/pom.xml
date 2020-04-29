@@ -32,10 +32,8 @@
     <description>Spring Cloud Plus Framework Parent</description>
 
     <modules>
-        <module>scp-common-api</module>
-        <module>scp-common-server</module>
-        <module>scp-framework-core</module>
         <module>scp-framework-config</module>
+        <module>scp-framework-core</module>
     </modules>
 
 </project>

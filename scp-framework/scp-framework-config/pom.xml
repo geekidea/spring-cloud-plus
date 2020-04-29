@@ -31,14 +31,16 @@
 
     <dependencies>
         <dependency>
+            <groupId>io.geekidea.cloud</groupId>
+            <artifactId>scp-common-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 

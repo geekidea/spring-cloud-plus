@@ -1,0 +1,53 @@
+package ${package.Mapper};
+
+import ${superMapperClassPackage};
+import ${package.Entity}.${entity};
+#if(${cfg.generatorPageQuery})
+import ${cfg.pageQueryClass};
+#end
+#if(${cfg.isImportVoPackage})
+import ${cfg.voClass};
+#end
+
+import org.springframework.stereotype.Repository;
+
+#if(${cfg.generatorStrategy} != 'SIMPLE')
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
+import java.io.Serializable;
+#end
+
+/**
+ * $!{table.comment} Mapper 接口
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+@Repository
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+#if(${cfg.generatorStrategy} == 'ALL')
+    /**
+     * 根据ID获取查询对象
+     *
+     * @param id
+     * @return
+     */
+    ${cfg.voClassName} get${entity}ById(Serializable id);
+
+    /**
+     * 获取分页对象
+     *
+     * @param page
+     * @param ${cfg.entityObjectName}QueryParam
+     * @return
+     */
+    IPage<${cfg.voClassName}> get${entity}PageList(@Param("page") Page page, @Param("param") ${entity}${cfg.pageQuery} ${cfg.entityObjectName}${cfg.pageQuery});
+#end
+
+}
+#end

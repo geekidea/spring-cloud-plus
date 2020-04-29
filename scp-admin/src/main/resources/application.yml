@@ -27,7 +27,7 @@ spring:
             order: 2000
 
 # Spring Boot Admin 登录账号密码
-spring-boot-plus:
+spring-cloud-plus:
   admin:
     username: admin
     password: admin

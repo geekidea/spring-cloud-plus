@@ -1,0 +1,22 @@
+package ${cfg.feignClientFactoryPackage};
+
+import feign.hystrix.FallbackFactory;
+import ${cfg.feignClientPackage}.${entity}Client;
+import ${cfg.feignClientFallbackPackage}.${entity}ClientFallback;
+import org.springframework.stereotype.Component;
+
+/**
+ * $!{table.comment} Feign Fallback Factory
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Component
+public class ${entity}ClientFallbackFactory implements FallbackFactory<${entity}Client> {
+    @Override
+    public ${entity}Client create(Throwable throwable) {
+        ${entity}ClientFallback ${cfg.entityObjectName}ClientFallback = new ${entity}ClientFallback();
+        ${cfg.entityObjectName}ClientFallback.setThrowable(throwable);
+        return ${cfg.entityObjectName}ClientFallback;
+    }
+}

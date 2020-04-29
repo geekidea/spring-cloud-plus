@@ -29,4 +29,18 @@
     <artifactId>scp-framework-core</artifactId>
     <name>scp-framework-core</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.geekidea.cloud</groupId>
+            <artifactId>scp-framework-config</artifactId>
+        </dependency>
+        <!-- mybatis-plus begin -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!-- mybatis-plus end -->
+    </dependencies>
+
 </project>

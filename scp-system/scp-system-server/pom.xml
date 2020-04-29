@@ -32,11 +32,11 @@
     <dependencies>
         <dependency>
             <groupId>io.geekidea.cloud</groupId>
-            <artifactId>scp-common-server</artifactId>
+            <artifactId>scp-system-api</artifactId>
         </dependency>
         <dependency>
             <groupId>io.geekidea.cloud</groupId>
-            <artifactId>scp-system-api</artifactId>
+            <artifactId>scp-common-server</artifactId>
         </dependency>
     </dependencies>
 

@@ -28,3 +28,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+temp.txt
+TODO.md

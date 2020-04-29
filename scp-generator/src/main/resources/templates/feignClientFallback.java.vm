@@ -1,0 +1,76 @@
+package ${cfg.feignClientFallbackPackage};
+
+import ${package.Entity}.${entity};
+import ${cfg.feignClientPackage}.${entity}Client;
+#if(${cfg.generatorPageQuery})
+import ${cfg.pageQueryClass};
+#end
+#if(${cfg.isImportVoPackage})
+import ${cfg.voClass};
+#end
+import ${cfg.apiResultClass};
+import ${cfg.pagingClass};
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+/**
+ * $!{table.comment} Feign Fallback
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Slf4j
+@Component
+public class ${entity}ClientFallback implements ${entity}Client {
+
+    @Setter
+    private Throwable throwable;
+
+#if(${cfg.generatorStrategy} != 'SIMPLE')
+    /**
+     * 添加$!{table.comment}
+     */
+    @Override
+    public ApiResult<Boolean> add${entity}(${entity} ${cfg.entityObjectName}) throws Exception {
+        log.error("错误原因：", throwable);
+        return ApiResult.fail();
+    }
+
+    /**
+     * 修改$!{table.comment}
+     */
+    @Override
+    public ApiResult<Boolean> update${entity}(${entity} ${cfg.entityObjectName}) throws Exception {
+        log.error("错误原因：", throwable);
+        return ApiResult.fail();
+    }
+
+    /**
+     * 删除$!{table.comment}
+     */
+    @Override
+    public ApiResult<Boolean> delete${entity}(Long id) throws Exception {
+        log.error("错误原因：", throwable);
+        return ApiResult.fail();
+    }
+
+    /**
+     * 获取$!{table.comment}详情
+     */
+    @Override
+    public ApiResult<${cfg.voClassName}> get${entity}(Long id) throws Exception {
+        log.error("错误原因：", throwable);
+        return ApiResult.fail();
+    }
+
+    /**
+     * $!{table.comment}分页列表
+     */
+    @Override
+    public ApiResult<Paging<${cfg.voClassName}>> get${entity}PageList(${entity}${cfg.pageQuery} ${cfg.entityObjectName}${cfg.pageQuery}) throws Exception {
+        log.error("错误原因：", throwable);
+        return ApiResult.fail();
+    }
+#end
+}

@@ -48,6 +48,9 @@ mvn clean install
 sh nacos/bin/startup.sh -m standalone
 ```
 
+#### Nacos文档
+[https://nacos.io/zh-cn/docs/quick-start.html](https://nacos.io/zh-cn/docs/quick-start.html)
+
 #### 访问Nacos控制台
 [http://localhost:8848/nacos](http://localhost:8848/nacos)
 Nacos控制台账号密码：`nacos`/`nacos`
@@ -55,6 +58,9 @@ Nacos控制台账号密码：`nacos`/`nacos`
 ### 2. Sentinel 熔断/限流等
 #### 下载Sentinel 1.7.2
 [https://github.com/alibaba/Sentinel/releases/tag/1.7.2](https://github.com/alibaba/Sentinel/releases/tag/1.7.2)
+
+#### Sentinel文档
+[https://sentinelguard.io/zh-cn/docs/quick-start.html](https://sentinelguard.io/zh-cn/docs/quick-start.html)
 
 #### 启动Sentinel
 ```text
@@ -65,10 +71,41 @@ java -Dserver.port=8600 -Dcsp.sentinel.dashboard.server=localhost:8600 -Dproject
 [http://localhost:8600](http://localhost:8600)
 Sentinel控制台账号密码：`sentinel`/`sentinel`
 
-### 3. seata
-> 暂时不用配置
-#### 下载seata
+### 3. Seata
+#### 下载Seata
 [https://github.com/seata/seata/releases/tag/v1.1.0](https://github.com/seata/seata/releases/tag/v1.1.0)
+
+#### 启动Seata
+```text
+cd seata/bin
+sh seata-server.sh -p 8091 -h 127.0.0.1 -m file
+```
+
+#### 创建`undo_log`表
+```sql
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `context` varchar(128) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+```
+
+#### Seata文档
+[http://seata.io/zh-cn/docs/user/quickstart.html](http://seata.io/zh-cn/docs/user/quickstart.html)
+
+#### Seata示例
+[https://github.com/seata/seata-samples/tree/master/springcloud-nacos-seata](https://github.com/seata/seata-samples/tree/master/springcloud-nacos-seata)
+
+
+
 
 
 ### 4. 服务启动顺序

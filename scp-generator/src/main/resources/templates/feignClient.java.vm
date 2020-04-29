@@ -1,0 +1,62 @@
+package ${cfg.feignClientPackage};
+
+import ${package.Entity}.${entity};
+import ${cfg.feignClientFactoryPackage}.${entity}ClientFallbackFactory;
+#if(${cfg.generatorPageQuery})
+import ${cfg.pageQueryClass};
+#end
+#if(${cfg.isImportVoPackage})
+import ${cfg.voClass};
+#end
+import ${cfg.apiResultClass};
+import ${cfg.pagingClass};
+import ${cfg.feignConfigPackage};
+import org.springframework.cloud.openfeign.FeignClient;
+#if(${cfg.generatorStrategy} != 'SIMPLE')
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+#end
+
+/**
+ * $!{table.comment} Feign Client
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@FeignClient(name = "${cfg.serverName}", path = "/${cfg.entityObjectName}", fallbackFactory = ${entity}ClientFallbackFactory.class, configuration = FeignConfiguration.class)
+public interface ${entity}Client {
+
+#if(${cfg.generatorStrategy} != 'SIMPLE')
+    /**
+     * 添加$!{table.comment}
+     */
+    @PostMapping("/add")
+    ApiResult<Boolean> add${entity}(@RequestBody ${entity} ${cfg.entityObjectName}) throws Exception;
+
+    /**
+     * 修改$!{table.comment}
+     */
+    @PostMapping("/update")
+    ApiResult<Boolean> update${entity}(@RequestBody ${entity} ${cfg.entityObjectName}) throws Exception;
+
+    /**
+     * 删除$!{table.comment}
+     */
+    ApiResult<Boolean> delete${entity}(@PathVariable("id") Long id) throws Exception;
+
+    /**
+     * 获取$!{table.comment}详情
+     */
+    @GetMapping("/info/{id}")
+    ApiResult<${cfg.voClassName}> get${entity}(@PathVariable("id") Long id) throws Exception;
+
+    /**
+     * $!{table.comment}分页列表
+     */
+    @PostMapping("/list")
+    ApiResult<Paging<${cfg.voClassName}>> get${entity}PageList(@RequestBody ${entity}${cfg.pageQuery} ${cfg.entityObjectName}${cfg.pageQuery}) throws Exception;
+#end
+
+}

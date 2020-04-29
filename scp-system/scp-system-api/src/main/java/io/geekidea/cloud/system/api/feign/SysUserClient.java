@@ -16,7 +16,7 @@
 
 package io.geekidea.cloud.system.api.feign;
 
-import io.geekidea.cloud.framework.config.FeignConfiguration;
+import io.geekidea.cloud.framework.config.feign.FeignConfiguration;
 import io.geekidea.cloud.system.api.entity.SysUser;
 import io.geekidea.cloud.system.api.feign.factory.SysUserClientFallbackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
