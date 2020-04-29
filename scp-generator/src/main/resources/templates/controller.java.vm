@@ -139,7 +139,7 @@ public class ${table.controllerName} {
     /**
      * $!{table.comment}分页列表
      */
-    @PostMapping("/list")
+    @PostMapping("/page")
 #if(${cfg.requiresPermissions})
     @RequiresPermissions("$!{cfg.colonTableName}:page")
 #end

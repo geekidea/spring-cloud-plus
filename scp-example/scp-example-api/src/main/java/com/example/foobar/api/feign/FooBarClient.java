@@ -47,7 +47,7 @@ public interface FooBarClient {
     /**
      * FooBar分页列表
      */
-    @PostMapping("/list")
+    @PostMapping("/page")
     ApiResult<Paging<FooBar>> getFooBarPageList(@RequestBody FooBarPageQuery fooBarPageQuery) throws Exception;
 
 }
