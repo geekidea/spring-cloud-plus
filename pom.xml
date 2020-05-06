@@ -302,11 +302,6 @@
             </dependency>
             <dependency>
                 <groupId>io.geekidea.cloud</groupId>
-                <artifactId>scp-common-util</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.geekidea.cloud</groupId>
                 <artifactId>scp-common-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
